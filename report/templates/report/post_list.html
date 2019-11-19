@@ -1,26 +1,19 @@
-<html>
-    <head>
-        <title>波浪智投維護群</title>
-    </head>
-    <body>
-        <div>
-            <h1><a href="/">波浪智投維護群</a></h1>
-        </div>
+{% extends 'report/base.html' %}
 
-        {% for report in reports %}
-            <div>
-                <h2><a href="">{{ report.title }}</a></h2>
-                <p>author: {{ report.author }}</p>
-                <p>bank_name: {{ report.bank_name }}</p>
-                <p>started: {{ report.started_date }}</p>
-                <p>invest: {{ report.invest }}</p>
-                <p>withdrew: {{ report.withdrew }}</p>
-                <p>gain/loss: {{ report.gain_loss }}</p>
-                <p>face_value: {{ report.face_value }}</p>
-                <p>venue: {{report.venue }}</p>
-                <p>officer: {{ report.officer }}</p>
-                <p>{{ report.text|linebreaksbr }}</p>
-            </div>
-        {% endfor %}
-    </body>
-</html>
+{% block content %}
+    {% for report in reports %}
+        <div class="post">
+            <h2><a href="{% url 'post_detail' pk=report.pk %}">{{ report.title }}</a></h2>
+            <p>Author/使用者:  {{ report.author }}</p>
+            <p>Bank_name/銀行名稱:  {{ report.bank_name }}</p>
+            <p>Start_date/開始投資日期:  {{ report.started_date }}</p>
+            <p>Investment/總投資額 (新台幣):  {{ report.invest }}</p>
+            <p>Withdraw/總提款額 (新台幣):  {{ report.withdrew }}</p>
+            <p>Gain_loss/獲利或損失 (新台幣: 損失, 請使用負數):  {{ report.gain_loss }}</p>
+            <p>Face_value/最後一天的面值 (美元):  {{ report.face_value }}</p>
+            <p>Venue/台灣管轄地:  {{report.venue }}</p>
+            <p>Officer/警官:  {{ report.officer }}</p>
+            <p>補充細節:</br>  {{ report.text|linebreaksbr }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
