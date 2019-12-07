@@ -8,6 +8,8 @@
             </div>
         {% endif %}
         <h2>{{ report.title }}</h2>
+        <a class="btn btn-default" href="{% url 'post_edit' pk=report.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+
         <p>Author/使用者:  {{ report.author }}</p>
         <p>Bank_name/銀行名稱:  {{ report.bank_name }}</p>
         <p>Start_date/開始投資日期:  {{ report.started_date }}</p>
@@ -15,6 +17,7 @@
         <p>Withdraw/總提款額 (新台幣):  {{ report.withdrew }}</p>
         <p>Gain_loss/獲利或損失 (新台幣: 損失, 請使用負數):  {{ report.gain_loss }}</p>
         <p>Face_value/最後一天的面值 (美元):  {{ report.face_value }}</p>
+        <img src="{{ report.cover.url}}" alt="{{ report.title }}" height="300">
         <p>Venue/台灣管轄地:  {{report.venue }}</p>
         <p>Officer/警官:  {{ report.officer }}</p>
         <p>補充細節:</br> {{ report.text|linebreaksbr }}</p>

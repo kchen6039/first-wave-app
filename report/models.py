@@ -14,9 +14,18 @@ class Report(models.Model):
     withdrew = models.IntegerField('總提款額 (TWDs): ', default=0)
     gain_loss = models.IntegerField('總成本的損益 (TWDs): ', default=0)
     face_value = models.IntegerField('最後一天的波浪帳戶面值 (USDs): ', default=0)
+    cover = models.ImageField(upload_to='images/', blank=True)
     venue = models.CharField('警察局所屬機關: ', max_length=120, blank=True, null=True)
     officer = models.CharField('分局警務員: ', max_length = 60, blank=True, null=True)
     text = models.TextField('其他備註: ', blank=True)
+    objects = models.Manager()
 
     def __str__(self):
         return self.title
+
+class Image(models.Model):
+    name= models.CharField(max_length=500)
+    imagefile= models.FileField(upload_to='images/', null=True, verbose_name="Image")
+
+    def __str__(self):
+        return self.name + ": " + str(self.imagefile)

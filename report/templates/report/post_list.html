@@ -11,6 +11,7 @@
             <p>Withdraw/總提款額 (新台幣):  {{ report.withdrew }}</p>
             <p>Gain_loss/獲利或損失 (新台幣: 損失, 請使用負數):  {{ report.gain_loss }}</p>
             <p>Face_value/最後一天的面值 (美元):  {{ report.face_value }}</p>
+            <img src="{{ report.cover.url}}" alt="{{ report.title }}" height="150">
             <p>Venue/台灣管轄地:  {{report.venue }}</p>
             <p>Officer/警官:  {{ report.officer }}</p>
             <p>補充細節:</br>  {{ report.text|linebreaksbr }}</p>
